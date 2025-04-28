@@ -25,3 +25,13 @@ runs:
   steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+
+    - name: Get repository description
+      id: get_description
+      run: |
+        ${{ github.action_path }}/scripts/get-description.sh \
+          "${{ inputs.repository }}" \
+          "$GITHUB_TOKEN"
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+      shell: bash
