@@ -14,9 +14,15 @@ jobs:
   get-description:
     runs-on: ubuntu-latest
     steps:
-      - uses: ryohidaka/action-get-description@v0.1.0
+      - name: Run Get Description Action
+        id: get_description
+        uses: ryohidaka/action-get-description@v0.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show Description
+        run: |
+          echo "${{ steps.get_description.outputs.description }}"
 ```
 
 ## Inputs
