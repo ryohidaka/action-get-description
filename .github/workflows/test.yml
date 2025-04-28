@@ -10,5 +10,30 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: "./"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Run the action defined in this repository
+      - name: Run Get Description Action
+        id: get_description
+        uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Check if the description matches the expected value
+      - name: Assert Description
+        run: |
+          # Expected description
+          expected="GitHub Actions to get repository description."
+
+          # Actual description from the action output
+          actual="${{ steps.get_description.outputs.description }}"
+
+          echo "::debug::Expected: $expected"
+          echo "::debug::Actual: $actual"
+
+          # Fail if the expected and actual descriptions do not match
+          if [ "$actual" != "$expected" ]; then
+            echo "::error title=Assertion Failed::Expected '$expected' but got '$actual'"
+            exit 1
+          fi
