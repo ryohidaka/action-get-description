@@ -19,6 +19,9 @@ inputs:
     default: ${{ github.repository }}
 
 outputs:
+  description:
+    description: "The description of the repository"
+    value: ${{ steps.get_description.outputs.description }}
 
 runs:
   using: "composite"

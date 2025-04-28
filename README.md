@@ -28,6 +28,6 @@ jobs:
 
 ## Outputs
 
-| Output | Description | Example |
-| ------ | ----------- | ------- |
-|        |             |         |
+| Output        | Description                       | Example                            |
+| ------------- | --------------------------------- | ---------------------------------- |
+| `description` | The description of the repository | `ryohidaka/action-get-description` |
