@@ -15,13 +15,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: ryohidaka/action-get-description@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Inputs
 
-| Input | Description | Required | Default |
-| ----- | ----------- | -------- | ------- |
-|       |             |          |         |
+| Input        | Description                               | Required | Default            |
+| ------------ | ----------------------------------------- | -------- | ------------------ |
+| `token`      | GitHub Token for API access               | ✅       |                    |
+| `repository` | The repository in the format `owner/repo` |          | current repository |
 
 ## Outputs
 

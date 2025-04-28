@@ -9,6 +9,14 @@ branding:
   icon: send
 
 inputs:
+  token:
+    description: "GitHub Token for API access"
+    required: true
+
+  repository:
+    description: "The repository in the format owner/repo (default: current repository)"
+    required: false
+    default: ${{ github.repository }}
 
 outputs:
 
