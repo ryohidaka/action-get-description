@@ -14,7 +14,7 @@ jobs:
   get-description:
     runs-on: ubuntu-latest
     steps:
-      - uses: ryohidaka/action-get-description@v1
+      - uses: ryohidaka/action-get-description@v0.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
