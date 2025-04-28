@@ -5,8 +5,8 @@ author: "ryohidaka"
 description: "GitHub Actions to get repository description."
 
 branding:
-  color: green
-  icon: send
+  color: white
+  icon: align-left
 
 inputs:
   token:
