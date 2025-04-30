@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/ryohidaka/action-get-description/compare/v0.1.0...v0.1.1) (2025-04-30)
+
+
+### Bug Fixes
+
+* Eliminate temp file by parsing curl response in-memory ([ab54f11](https://github.com/ryohidaka/action-get-description/commit/ab54f11fe3f90243768cf562461f663d1209c734))
+
 ## [0.1.0](https://github.com/ryohidaka/action-get-description/compare/v0.1.0...v0.1.0) (2025-04-28)
 
 
