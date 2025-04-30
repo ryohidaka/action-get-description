@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Run Get Description Action
         id: get_description
-        uses: ryohidaka/action-get-description@v0.1.0
+        uses: ryohidaka/action-get-description@v0.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
