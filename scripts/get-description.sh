@@ -6,7 +6,6 @@ set -euo pipefail
 REPO="${1:-}"
 TOKEN="${2:-}"
 API_URL="https://api.github.com/repos/${REPO}"
-RESPONSE_FILE="response.json"
 
 # --- Functions ---
 error_exit() {
@@ -26,17 +25,19 @@ elif [[ -z "$TOKEN" ]]; then
     error_exit "Missing token" "[ERROR] Usage: $0 <repository> <token> - Token argument is missing."
 fi
 
-# API Request
-http_status=$(curl -sS -w "%{http_code}" -o "$RESPONSE_FILE" -H "Authorization: token $TOKEN" "$API_URL")
+# API Request and extract description
+response=$(curl -sS -H "Authorization: token $TOKEN" -w "\n%{http_code}" "$API_URL")
+http_status=$(echo "$response" | tail -n1)
+body=$(echo "$response" | sed '$d')
 
 # Check HTTP Status
 if [[ "$http_status" -ne 200 ]]; then
     error_exit "API request failed" "[ERROR] Failed to fetch repository '${REPO}'. HTTP status code: $http_status
-$(cat "$RESPONSE_FILE")"
+$body"
 fi
 
 # Extract Description
-description=$(jq -r .description "$RESPONSE_FILE")
+description=$(echo "$body" | jq -r .description)
 
 echo "::notice::Result: $description"
 
